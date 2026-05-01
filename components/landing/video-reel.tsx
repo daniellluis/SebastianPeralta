@@ -3,8 +3,8 @@
 import { AnimatedTitle } from "./animated-title"
 
 const VIDEOS = [
-  { src: "/images/reel_4.mp4", title: "Reel 4" },
-  { src: "/images/reel_5.mp4", title: "Reel 5" },
+  { id: "reel-4", src: "https://res.cloudinary.com/dxjyijvt9/video/upload/v1777660116/reel_4_i5wyfi.mp4", title: "Reel 4" },
+  { id: "reel-5", src: "https://res.cloudinary.com/dxjyijvt9/video/upload/v1777658267/reel_5_r47u24.mp4", title: "Reel 5" },
 ]
 
 export function VideoReel() {
@@ -15,7 +15,7 @@ export function VideoReel() {
 
         <div className="grid md:grid-cols-2 gap-6">
           {VIDEOS.map((video) => (
-            <div key={video.src} className="border-[3px] border-foreground rounded-[10px] overflow-hidden">
+            <div key={video.id} className="border-[3px] border-foreground rounded-[10px] overflow-hidden">
               <video
                 src={video.src}
                 controls
