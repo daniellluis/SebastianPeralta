@@ -5,9 +5,10 @@ import { useRef, useState, useEffect } from "react"
 interface AnimatedTitleProps {
   text: string
   className?: string
+  style?: React.CSSProperties
 }
 
-export function AnimatedTitle({ text, className = "" }: AnimatedTitleProps) {
+export function AnimatedTitle({ text, className = "", style }: AnimatedTitleProps) {
   const [visible, setVisible] = useState(false)
   const ref = useRef<HTMLHeadingElement>(null)
 
@@ -23,6 +24,7 @@ export function AnimatedTitle({ text, className = "" }: AnimatedTitleProps) {
   return (
     <h2
       ref={ref}
+      style={style}
       className={`font-display uppercase leading-none tracking-tighter ${className}`}
     >
       {text.split("").map((char, i) => (

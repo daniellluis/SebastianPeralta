@@ -102,12 +102,12 @@ export function Hero() {
     }
   }, [])
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}
-          src="/images/reel_3.mp4"
+          src="https://res.cloudinary.com/dxjyijvt9/video/upload/v1777660026/reel_3_beishe.mp4"
           autoPlay
           muted
           loop
@@ -135,11 +135,12 @@ export function Hero() {
       </button>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-[clamp(1.5rem,7vw,6rem)] pb-[clamp(3.25rem,8vh,6rem)] max-w-[82vw] lg:max-w-[78vw] mx-auto">
 
         {/* Name */}
         <h1 className="text-7xl md:text-[10rem] lg:text-[12rem] font-display text-foreground leading-none tracking-tighter uppercase">
-          {PRODUCER_CONFIG.name}
+          <span className="block">Sebastian</span>
+          <span className="block">Peralta</span>
         </h1>
 
         {/* Tagline */}
@@ -148,19 +149,19 @@ export function Hero() {
         </p>
 
         {/* Listen Button - bordes redondeados pill como Pharrell */}
-        <div className="mt-20">
+        <div className="mt-16">
           <button
             onClick={() => document.getElementById("music")?.scrollIntoView({ behavior: "smooth" })}
             className="border-[3px] border-foreground rounded-[10px] text-foreground font-semibold hover:bg-foreground hover:text-background transition-colors"
-            style={{ padding: "clamp(0.4rem, 0.8vw, 0.7rem) clamp(1.2rem, 2.5vw, 2rem)", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}
+            style={{ padding: "clamp(0.35rem, 0.7vw, 0.55rem) clamp(1rem, 2.1vw, 1.6rem)", fontSize: "clamp(0.75rem, 0.9vw, 0.9rem)" }}
           >
             Listen
           </button>
         </div>
 
         {/* Social Links Bar - con borde redondeado como Pharrell */}
-        <div className="mt-8 inline-flex items-center border-[3px] border-foreground rounded-[10px] gap-4"
-          style={{ padding: "clamp(0.4rem, 0.7vw, 0.6rem) clamp(0.8rem, 1.5vw, 1.2rem)" }}>
+        <div className="mt-6 inline-flex items-center border-[3px] border-foreground rounded-[10px] gap-3"
+          style={{ padding: "clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.7rem, 1.25vw, 1rem)" }}>
           {SOCIAL_LINKS.map((social) => (
             <a
               key={social.name}
@@ -176,19 +177,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Flecha hacia abajo pulsante */}
-      <button
-        onClick={() => {
-          const next = document.querySelector("section:nth-of-type(2)")
-          next?.scrollIntoView({ behavior: "smooth" })
-        }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-foreground animate-bounce hover:opacity-60 transition-opacity"
-        aria-label="Scroll hacia abajo"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-8 h-8">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
     </section>
   )
 }

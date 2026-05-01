@@ -38,11 +38,11 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section id="contact" className="relative min-h-[100svh] w-full flex items-center justify-center py-24 px-[clamp(1.5rem,7vw,6rem)]">
+      <div className="max-w-[82vw] lg:max-w-[78vw] mx-auto w-full">
 
         {/* Heading */}
-        <AnimatedTitle text="Contacto" className="text-5xl md:text-7xl text-foreground mb-4" />
+        <AnimatedTitle text="Contacto" className="text-foreground mb-4" style={{ fontSize: "clamp(2rem, 8vw, 4rem)" }} />
         <p className="text-muted-foreground text-center mb-16 text-base">
           Trabajemos juntos en tu próximo hit
         </p>

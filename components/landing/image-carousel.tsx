@@ -59,12 +59,12 @@ export function ImageCarousel() {
   }, [isAutoPlaying, nextSlide])
 
   return (
-    <section id="gallery" className="relative py-16 px-4 pb-24">
-      <div className="max-w-6xl mx-auto">
+    <section id="gallery" className="relative min-h-[100svh] w-full flex items-center justify-center py-16 px-[clamp(1.5rem,7vw,6rem)]">
+      <div className="max-w-[82vw] lg:max-w-[78vw] mx-auto w-full">
 
         {/* Header */}
         <div className="flex items-end justify-between mb-10">
-          <AnimatedTitle text="Galería" className="text-5xl md:text-7xl text-foreground" />
+          <AnimatedTitle text="Galería" className="text-foreground" style={{ fontSize: "clamp(2rem, 8vw, 4rem)" }} />
           <span className="text-muted-foreground font-mono text-sm mb-2">
             {String(currentIndex + 1).padStart(2, "0")} / {String(GALLERY_IMAGES.length).padStart(2, "0")}
           </span>
@@ -99,7 +99,7 @@ export function ImageCarousel() {
             style={{ animationDirection: "alternate", animationDuration: "900ms" }}
             aria-label="Imagen anterior"
           >
-            <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: "clamp(2rem, 5vw, 3rem)", height: "clamp(2rem, 5vw, 3rem)" }}>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -109,7 +109,7 @@ export function ImageCarousel() {
             style={{ animationDirection: "alternate", animationDuration: "900ms" }}
             aria-label="Imagen siguiente"
           >
-            <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: "clamp(2rem, 5vw, 3rem)", height: "clamp(2rem, 5vw, 3rem)" }}>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -129,17 +129,6 @@ export function ImageCarousel() {
         </div>
 
       </div>
-
-      {/* Flecha hacia abajo */}
-      <button
-        onClick={() => document.getElementById("music")?.scrollIntoView({ behavior: "smooth" })}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-foreground animate-bounce hover:opacity-60 transition-opacity"
-        aria-label="Scroll hacia abajo"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-8 h-8">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
     </section>
   )
 }
