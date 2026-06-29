@@ -54,7 +54,7 @@ const TRACKS = [
 
 export function MusicPlayer() {
   const [currentTrack, setCurrentTrack] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true)
   const [progress, setProgress] = useState(0)
   const [volume, setVolume] = useState(0.7)
   const [currentTime, setCurrentTime] = useState("0:00")
@@ -67,6 +67,13 @@ export function MusicPlayer() {
       audioRef.current.volume = volume
     }
   }, [volume])
+
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+    audio.volume = volume
+    audio.play().catch(() => setIsPlaying(false))
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const togglePlay = () => {
     if (!audioRef.current) return

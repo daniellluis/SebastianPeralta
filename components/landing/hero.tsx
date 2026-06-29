@@ -85,7 +85,8 @@ function SocialIcon({ icon }: { icon: string }) {
 
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [muted, setMuted] = useState(true)
+  const [muted, setMuted] = useState(false)
+  const userInteracted = useRef(false)
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -96,9 +97,26 @@ export function Hero() {
 
   useEffect(() => {
     const video = videoRef.current
-    if (video) {
-      video.muted = true
-      video.play().catch(() => {})
+    if (!video) return
+
+    video.muted = true
+    video.play().catch(() => {})
+
+    const unlock = () => {
+      if (userInteracted.current) return
+      userInteracted.current = true
+      video.muted = false
+      setMuted(false)
+      document.removeEventListener("click", unlock)
+      document.removeEventListener("touchstart", unlock)
+    }
+
+    document.addEventListener("click", unlock)
+    document.addEventListener("touchstart", unlock)
+
+    return () => {
+      document.removeEventListener("click", unlock)
+      document.removeEventListener("touchstart", unlock)
     }
   }, [])
   return (
