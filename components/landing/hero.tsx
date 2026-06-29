@@ -17,9 +17,9 @@ const PRODUCER_CONFIG = {
 // REDES SOCIALES - EDITA AQUI
 // ============================================
 const SOCIAL_LINKS = [
-  { name: "Instagram", url: "https://instagram.com/sebastianperalta", icon: "instagram" },
+  { name: "Instagram", url: "https://www.instagram.com/sebastian__peralta?igsh=MXR4d2NkZHhieXc2ag==", icon: "instagram" },
   { name: "X", url: "https://x.com/sebastianperalta", icon: "x" },
-  { name: "Facebook", url: "https://facebook.com/sebastianperalta", icon: "facebook" },
+  { name: "Facebook", url: "https://www.facebook.com/share/1S18ZKXXXo/", icon: "facebook" },
   { name: "TikTok", url: "https://tiktok.com/@sebastianperalta", icon: "tiktok" },
   { name: "Apple Music", url: "https://music.apple.com/artist/sebastianperalta", icon: "applemusic" },
   { name: "Spotify", url: "https://open.spotify.com/artist/sebastianperalta", icon: "spotify" },
@@ -85,8 +85,7 @@ function SocialIcon({ icon }: { icon: string }) {
 
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [muted, setMuted] = useState(false)
-  const userInteracted = useRef(false)
+  const [muted, setMuted] = useState(true)
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -98,26 +97,8 @@ export function Hero() {
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
-
     video.muted = true
     video.play().catch(() => {})
-
-    const unlock = () => {
-      if (userInteracted.current) return
-      userInteracted.current = true
-      video.muted = false
-      setMuted(false)
-      document.removeEventListener("click", unlock)
-      document.removeEventListener("touchstart", unlock)
-    }
-
-    document.addEventListener("click", unlock)
-    document.addEventListener("touchstart", unlock)
-
-    return () => {
-      document.removeEventListener("click", unlock)
-      document.removeEventListener("touchstart", unlock)
-    }
   }, [])
   return (
     <section id="hero" className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
@@ -140,6 +121,7 @@ export function Hero() {
         onClick={toggleMute}
         className="absolute top-5 right-5 z-20 p-2 border-[2px] border-foreground rounded-[10px] text-foreground hover:opacity-60 transition-opacity"
         aria-label={muted ? "Activar sonido" : "Silenciar"}
+        suppressHydrationWarning
       >
         {muted ? (
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
@@ -180,18 +162,29 @@ export function Hero() {
         {/* Social Links Bar - con borde redondeado como Pharrell */}
         <div className="mt-6 inline-flex items-center border-[3px] border-foreground rounded-[10px] gap-3"
           style={{ padding: "clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.7rem, 1.25vw, 1rem)" }}>
-          {SOCIAL_LINKS.map((social) => (
-            <a
-              key={social.name}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground hover:opacity-60 transition-opacity"
-              aria-label={social.name}
-            >
-              <SocialIcon icon={social.icon} />
-            </a>
-          ))}
+          {SOCIAL_LINKS.map((social) =>
+            social.icon === "email" ? (
+              <button
+                key={social.name}
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="text-foreground hover:opacity-60 transition-opacity"
+                aria-label="Contacto"
+              >
+                <SocialIcon icon={social.icon} />
+              </button>
+            ) : (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground hover:opacity-60 transition-opacity"
+                aria-label={social.name}
+              >
+                <SocialIcon icon={social.icon} />
+              </a>
+            )
+          )}
         </div>
       </div>
 

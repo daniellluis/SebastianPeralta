@@ -1,11 +1,12 @@
 "use client"
 
 interface NavigationFooterProps {
-  currentSection: "hero" | "gallery" | "music" | "videos" | "contact"
+  currentSection: "hero" | "biography" | "gallery" | "music" | "videos" | "contact"
 }
 
 const SECTIONS = [
   { id: "hero", label: "Inicio" },
+  { id: "biography", label: "Biografía" },
   { id: "gallery", label: "Galería" },
   { id: "music", label: "Beats" },
   { id: "videos", label: "Videos" },
@@ -25,7 +26,7 @@ export function NavigationFooter({ currentSection }: NavigationFooterProps) {
   }
 
   return (
-    <div className="fixed bottom-4 md:bottom-5 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 bg-background/80 backdrop-blur px-4 py-3 rounded-full border border-foreground/20">
+    <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 bg-background/80 backdrop-blur px-4 rounded-full border border-foreground/20" style={{ height: 48 }}>
       {/* Flecha Anterior */}
       {prevSection && (
         <button

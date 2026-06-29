@@ -9,7 +9,7 @@ import { AnimatedTitle } from "./animated-title"
 const CONTACT_CONFIG = {
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
-  instagram: "https://instagram.com/nexusbeats",
+  instagram: "https://www.instagram.com/sebastian__peralta?igsh=MXR4d2NkZHhieXc2ag==",
   youtube: "https://youtube.com/@nexusbeats",
   spotify: "https://open.spotify.com/artist/...",
   defaultMessage: "Hola! Me interesa trabajar contigo en un proyecto musical.",

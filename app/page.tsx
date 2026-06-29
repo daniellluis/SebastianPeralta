@@ -8,13 +8,15 @@ import { VideoReel } from "@/components/landing/video-reel"
 import { Contact } from "@/components/landing/contact"
 import { Footer } from "@/components/landing/footer"
 import { NavigationFooter } from "@/components/landing/navigation-footer"
+import { Chatbox } from "@/components/landing/chatbox"
+import { Biography } from "@/components/landing/biography"
 
 export default function Home() {
-  const [currentSection, setCurrentSection] = useState<"hero" | "gallery" | "music" | "videos" | "contact">("hero")
+  const [currentSection, setCurrentSection] = useState<"hero" | "biography" | "gallery" | "music" | "videos" | "contact">("hero")
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "gallery", "music", "videos", "contact"]
+      const sections = ["hero", "biography", "gallery", "music", "videos", "contact"]
       for (const sectionId of sections) {
         const element = document.getElementById(sectionId)
         if (element) {
@@ -37,6 +39,9 @@ export default function Home() {
         {/* Hero Section */}
         <Hero />
         
+        {/* Biography */}
+        <Biography />
+
         {/* Gallery Carousel */}
         <ImageCarousel />
         
@@ -55,6 +60,9 @@ export default function Home() {
 
       {/* Floating Navigation Footer */}
       <NavigationFooter currentSection={currentSection} />
+
+      {/* Chatbox */}
+      <Chatbox />
     </>
   )
 }
