@@ -7,8 +7,8 @@ import { AnimatedTitle } from "./animated-title"
 // CONFIGURACION DE CONTACTO - EDITA AQUI
 // ============================================
 const CONTACT_CONFIG = {
-  whatsappNumber: "59895867228", // Tu numero con codigo de pais, sin + ni espacios
-  email: "elsebaperalta@gmail.com",
+  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
   instagram: "https://instagram.com/nexusbeats",
   youtube: "https://youtube.com/@nexusbeats",
   spotify: "https://open.spotify.com/artist/...",
@@ -22,19 +22,29 @@ export function Contact() {
     projectType: "beat",
     message: "",
   })
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle")
+  const [showModal, setShowModal] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const sendWhatsApp = () => {
-    const text = `Hola! Soy ${formData.name}.%0A%0ATipo de proyecto: ${formData.projectType}%0A%0A${formData.message}%0A%0AContacto: ${formData.email}`
-    window.open(`https://wa.me/${CONTACT_CONFIG.whatsappNumber}?text=${text}`, "_blank")
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    sendWhatsApp()
+    setStatus("sending")
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      if (!res.ok) throw new Error()
+      setStatus("sent")
+      setShowModal(true)
+      setFormData({ name: "", email: "", projectType: "beat", message: "" })
+    } catch {
+      setStatus("error")
+    }
   }
 
   return (
@@ -118,10 +128,14 @@ export function Contact() {
 
             <button
               type="submit"
-              className="mt-4 px-10 py-3 border-[3px] border-foreground rounded-[10px] text-foreground font-semibold hover:bg-foreground hover:text-background transition-colors"
+              disabled={status === "sending"}
+              className="mt-4 px-10 py-3 border-[3px] border-foreground rounded-[10px] text-foreground font-semibold hover:bg-foreground hover:text-background transition-colors disabled:opacity-50"
             >
-              Enviar por Correo
+              {status === "sending" ? "Enviando..." : "Enviar"}
             </button>
+            {status === "error" && (
+              <p className="text-sm text-red-500 mt-2">Hubo un error. Intentá de nuevo.</p>
+            )}
           </form>
 
           {/* Direct contact */}
@@ -168,6 +182,29 @@ export function Contact() {
         </div>
 
       </div>
+
+      {/* Modal de confirmación */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center px-6 pb-8 sm:pb-0">
+          <div className="absolute inset-0 bg-background/60 backdrop-blur-md" onClick={() => setShowModal(false)} />
+          <div className="relative w-full max-w-lg border-[3px] border-foreground bg-background p-10 sm:p-14">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Mensaje recibido</p>
+            <h3
+              className="font-display uppercase tracking-tighter text-foreground leading-none mb-6"
+              style={{ fontSize: "clamp(2.5rem, 8vw, 4rem)" }}
+            >
+              Pronto nos ponemos en contacto
+            </h3>
+            <div className="h-[2px] w-12 bg-foreground mb-8" />
+            <button
+              onClick={() => setShowModal(false)}
+              className="px-10 py-3 border-[3px] border-foreground text-foreground font-semibold hover:bg-foreground hover:text-background transition-colors"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
