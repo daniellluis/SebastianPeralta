@@ -9,9 +9,9 @@ import { AnimatedTitle } from "./animated-title"
 const CONTACT_CONFIG = {
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
-  instagram: "https://www.instagram.com/sebastian__peralta?igsh=MXR4d2NkZHhieXc2ag==",
-  youtube: "https://youtube.com/@nexusbeats",
-  spotify: "https://open.spotify.com/artist/...",
+  instagram: "https://www.instagram.com/sebastian__peralta/",
+  youtube: "https://www.youtube.com/@sebastianperalta3175",
+  spotify: "https://open.spotify.com/intl-es/artist/7fWhk7L57o8lKa8KxI8Beq?si=rp8ruoyRRBCWd6atV8ppLg",
   defaultMessage: "Hola! Me interesa trabajar contigo en un proyecto musical.",
 }
 

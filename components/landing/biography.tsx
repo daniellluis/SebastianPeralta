@@ -14,23 +14,35 @@ export function Biography() {
           {/* Texto principal */}
           <div className="space-y-6">
             <p className="text-foreground/80 text-lg leading-relaxed">
-              Sebastián Peralta es un productor musical con más de una década de trayectoria en la escena urbana latinoamericana. Nacido en Uruguay, su pasión por la música lo llevó a forjar su camino entre estudios de grabación en Montevideo, Madrid y Buenos Aires.
+              Sebastián Peralta es músico, compositor y productor musical uruguayo, con una amplia trayectoria en la producción, composición y dirección artística de proyectos de diversos géneros.
             </p>
             <p className="text-foreground/60 leading-relaxed">
-              Desde sus inicios en el trap y el reggaeton, Seba desarrolló un sonido propio que fusiona la intensidad del rap latino con melodías que trascienden fronteras. Su oído para los detalles y su obsesión por la calidad lo convirtieron en un referente para artistas emergentes y consagrados por igual.
+              Como compositor ha participado en canciones y producciones de artistas y proyectos como Bajofondo, Santullo, Socio, AFC, DosTresCinco, Kung Fú Ombijam, Papina de Palma, Se Armó Kokoa, Soy Turista y Cuareim 1080, entre otros.
             </p>
             <p className="text-foreground/60 leading-relaxed">
-              A lo largo de su carrera ha colaborado con artistas de España, Uruguay y Argentina, aportando su sello a producciones que suman millones de reproducciones. Su estudio es un espacio donde la creatividad no tiene límites y cada proyecto se trabaja con dedicación absoluta.
+              Se ha desempeñado como productor musical y arreglador en discos de artistas y bandas como No Te Va Gustar, Socio, La Santa, DosTresCinco, AFC, Kung Fú Ombijam, Se Armó Kokoa, Mateo Moreno, AliemRap, La Mala Lengua, Pepe Delay, UFA, Laura Chinelli, Inquilinos del Reggae e Ihara, entre otros.
+            </p>
+            <p className="text-foreground/60 leading-relaxed">
+              También ha trabajado en la preparación y dirección musical de espectáculos en vivo de Socio, DosTresCinco, AFC y Kung Fú Ombijam, participando en escenarios y festivales como Montevideo Rock, Semana de la Cerveza, así como en salas como La Trastienda Montevideo y la Sala Zavala Muniz del Teatro Solís.
+            </p>
+            <p className="text-foreground/60 leading-relaxed">
+              Ha sido nominado en los Premios Graffiti en las categorías de Mejor Productor y Mejor Compositor. Además, obtuvo ocho Premios Graffiti al Mejor Álbum de Hip Hop junto a distintos proyectos, entre ellos DosTresCinco, AFC, Kung Fú Ombijam y AliemRap. También recibió el premio a Canción del Año en 2019 por &ldquo;Juanas&rdquo; de AFC y el premio a Mejor Single de Música Electrónica en 2024 por &ldquo;Sálvame Remix&rdquo;, de UFA junto a Paola Dalto.
+            </p>
+            <p className="text-foreground/60 leading-relaxed">
+              En su labor como productor e ingeniero de grabación ha trabajado con destacados artistas de la música uruguaya y rioplatense, entre ellos Jorge Serrano, Fernando Ruiz Díaz, Gustavo Cordera, Guillermo Peluffo, Ana Prada, Hugo Fattoruso, Rubén Rada, Julieta Rada, Fernando Cabrera, Roberto Musso, Jorge Nasser, Knak, Facundo Balta, Cuareim 1080 y numerosos referentes de la música uruguaya y de la región.
+            </p>
+            <p className="text-foreground/60 leading-relaxed">
+              En 2025 fue el responsable de la producción musical de la obra teatral No Nos Pasa Nada, de la Comedia Nacional, dirigida por Jimena Márquez. Estrenada en el Teatro Solís, la obra realizó una temporada de 21 funciones con localidades agotadas, consolidando una destacada incursión de Peralta en la producción musical para teatro.
             </p>
           </div>
 
           {/* Stats */}
           <div className="space-y-0 divide-y divide-foreground/10">
             {[
-              { number: "10+", label: "Años de experiencia" },
-              { number: "3", label: "Países — España, Uruguay, Argentina" },
-              { number: "500+", label: "Beats producidos" },
-              { number: "50+", label: "Artistas colaborados" },
+              { number: "8", label: "Premios Graffiti — Mejor Álbum de Hip Hop" },
+              { number: "30+", label: "Artistas y bandas producidos" },
+              { number: "21", label: "Funciones agotadas — No Nos Pasa Nada, Teatro Solís" },
+              { number: "2019", label: "Canción del Año — “Juanas”, AFC" },
             ].map((stat) => (
               <div key={stat.label} className="py-6 flex items-end justify-between">
                 <span
