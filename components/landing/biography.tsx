@@ -4,10 +4,10 @@ import { AnimatedTitle } from "./animated-title"
 
 export function Biography() {
   return (
-    <section id="biography" className="relative min-h-[100svh] w-full flex items-center justify-center py-24 pb-32 px-[clamp(1.5rem,7vw,6rem)]">
+    <section id="biography" className="relative min-h-[100svh] w-full flex items-center justify-center py-[clamp(2rem,6vh,6rem)] px-[clamp(1.5rem,7vw,6rem)]">
       <div className="max-w-[82vw] lg:max-w-[78vw] mx-auto w-full">
 
-        <AnimatedTitle text="Biografía" className="text-foreground mb-16" style={{ fontSize: "clamp(2rem, 8vw, 4rem)" }} />
+        <AnimatedTitle text="Biografía" className="text-foreground mb-8 md:mb-12" style={{ fontSize: "clamp(2rem, 8vw, 4rem)" }} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
 
