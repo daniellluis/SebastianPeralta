@@ -24,6 +24,19 @@ const GALLERY_IMAGES = [
   { src: "/images/14.webp", alt: "Sebastian Peralta" },
   { src: "/images/15.jpg", alt: "Sebastian Peralta" },
   { src: "/images/16.jpeg", alt: "Sebastian Peralta" },
+  { src: "/images/17.jpeg", alt: "Sebastian Peralta" },
+  { src: "/images/18.jpg", alt: "Sebastian Peralta" },
+  { src: "/images/19.jpg", alt: "Sebastian Peralta" },
+  { src: "/images/20.jpg", alt: "Sebastian Peralta" },
+  { src: "/images/21.jpg", alt: "Sebastian Peralta" },
+  { src: "/images/22.jpg", alt: "Sebastian Peralta" },
+  { src: "/images/23.jpg", alt: "Sebastian Peralta" },
+  { src: "/images/24.jpg", alt: "Sebastian Peralta" },
+  { src: "/images/25.jpeg", alt: "Sebastian Peralta" },
+  { src: "/images/26.jpg", alt: "Sebastian Peralta" },
+  { src: "/images/27.jpg", alt: "Sebastian Peralta" },
+  { src: "/images/28.jpg", alt: "Sebastian Peralta" },
+  { src: "/images/29.jpg", alt: "Sebastian Peralta" },
 ]
 
 export function ImageCarousel() {
@@ -51,7 +64,7 @@ export function ImageCarousel() {
   }, [isAutoPlaying, nextSlide])
 
   return (
-    <section id="gallery" className="relative min-h-[100svh] w-full flex items-center justify-center py-16 px-[clamp(1.5rem,7vw,6rem)]">
+    <section id="gallery" className="relative min-h-[100svh] w-full flex items-center justify-center py-[clamp(2rem,6vh,4rem)] px-[clamp(1.5rem,7vw,6rem)]">
       <div className="max-w-[82vw] lg:max-w-[78vw] mx-auto w-full">
 
         {/* Header */}
@@ -63,7 +76,7 @@ export function ImageCarousel() {
         </div>
 
         {/* Image */}
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[10px]">
+        <div className="relative w-full overflow-hidden rounded-[10px]" style={{ height: "min(60vh, 44vw)" }}>
           {GALLERY_IMAGES.map((image, index) => (
             <div
               key={index}

@@ -9,9 +9,9 @@ const VIDEOS = [
 
 export function VideoReel() {
   return (
-    <section id="videos" className="relative min-h-[100svh] w-full flex items-center justify-center py-24 px-[clamp(1.5rem,7vw,6rem)]">
+    <section id="videos" className="relative min-h-[100svh] w-full flex items-center justify-center py-[clamp(2rem,6vh,6rem)] px-[clamp(1.5rem,7vw,6rem)]">
       <div className="max-w-[82vw] lg:max-w-[78vw] mx-auto w-full">
-        <AnimatedTitle text="Videos" className="text-foreground mb-16" style={{ fontSize: "clamp(2rem, 8vw, 4rem)" }} />
+        <AnimatedTitle text="Videos" className="text-foreground mb-8 md:mb-12" style={{ fontSize: "clamp(2rem, 8vw, 4rem)" }} />
 
         <div className="grid md:grid-cols-2 gap-6">
           {VIDEOS.map((video) => (

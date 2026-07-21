@@ -48,18 +48,18 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="relative min-h-[100svh] w-full flex items-center justify-center py-24 px-[clamp(1.5rem,7vw,6rem)]">
+    <section id="contact" className="relative min-h-[100svh] w-full flex items-center justify-center py-[clamp(2rem,6vh,6rem)] px-[clamp(1.5rem,7vw,6rem)]">
       <div className="max-w-[82vw] lg:max-w-[78vw] mx-auto w-full">
 
         {/* Heading */}
         <AnimatedTitle text="Contacto" className="text-foreground mb-4" style={{ fontSize: "clamp(2rem, 8vw, 4rem)" }} />
-        <p className="text-muted-foreground text-center mb-16 text-base">
+        <p className="text-muted-foreground text-center mb-8 md:mb-10 text-base">
           Trabajemos juntos en tu próximo hit
         </p>
 
         <div className="grid md:grid-cols-2 gap-10">
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-xs uppercase tracking-widest mb-2 text-muted-foreground">
                 Nombre
@@ -71,7 +71,7 @@ export function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-transparent border-b border-foreground/30 focus:border-foreground focus:outline-none transition-colors text-foreground placeholder:text-muted-foreground/40"
+                className="w-full px-4 py-2.5 bg-transparent border-b border-foreground/30 focus:border-foreground focus:outline-none transition-colors text-foreground placeholder:text-muted-foreground/40"
                 placeholder="Tu nombre"
               />
             </div>
@@ -87,7 +87,7 @@ export function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-transparent border-b border-foreground/30 focus:border-foreground focus:outline-none transition-colors text-foreground placeholder:text-muted-foreground/40"
+                className="w-full px-4 py-2.5 bg-transparent border-b border-foreground/30 focus:border-foreground focus:outline-none transition-colors text-foreground placeholder:text-muted-foreground/40"
                 placeholder="tu@email.com"
               />
             </div>
@@ -101,7 +101,7 @@ export function Contact() {
                 name="projectType"
                 value={formData.projectType}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-transparent border-b border-foreground/30 focus:border-foreground focus:outline-none transition-colors text-foreground"
+                className="w-full px-4 py-2.5 bg-transparent border-b border-foreground/30 focus:border-foreground focus:outline-none transition-colors text-foreground"
               >
                 <option value="beat" className="bg-background">Comprar Beat</option>
                 <option value="custom" className="bg-background">Beat Personalizado</option>
@@ -120,8 +120,8 @@ export function Contact() {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                rows={4}
-                className="w-full px-4 py-3 bg-transparent border-b border-foreground/30 focus:border-foreground focus:outline-none transition-colors text-foreground placeholder:text-muted-foreground/40 resize-none"
+                rows={3}
+                className="w-full px-4 py-2.5 bg-transparent border-b border-foreground/30 focus:border-foreground focus:outline-none transition-colors text-foreground placeholder:text-muted-foreground/40 resize-none"
                 placeholder="Cuéntame sobre tu proyecto..."
               />
             </div>
@@ -139,7 +139,7 @@ export function Contact() {
           </form>
 
           {/* Direct contact */}
-          <div className="flex flex-col gap-8 justify-center">
+          <div className="flex flex-col gap-6 justify-start pt-1">
             <div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Contacto directo</p>
               <a
