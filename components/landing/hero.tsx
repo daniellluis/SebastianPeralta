@@ -17,13 +17,13 @@ const PRODUCER_CONFIG = {
 // REDES SOCIALES - EDITA AQUI
 // ============================================
 const SOCIAL_LINKS = [
-  { name: "Instagram", url: "https://www.instagram.com/sebastian__peralta?igsh=MXR4d2NkZHhieXc2ag==", icon: "instagram" },
-  { name: "X", url: "https://x.com/sebastianperalta", icon: "x" },
-  { name: "Facebook", url: "https://www.facebook.com/share/1S18ZKXXXo/", icon: "facebook" },
-  { name: "TikTok", url: "https://tiktok.com/@sebastianperalta", icon: "tiktok" },
+  { name: "Instagram", url: "https://www.instagram.com/sebastian__peralta/", icon: "instagram" },
+  { name: "X", url: "https://x.com/SebastinPeralt8", icon: "x" },
+  { name: "Facebook", url: "https://www.facebook.com/profile.php?id=100032094896809", icon: "facebook" },
+  { name: "TikTok", url: "https://www.tiktok.com/@elsebaperalta", icon: "tiktok" },
   { name: "Apple Music", url: "https://music.apple.com/artist/sebastianperalta", icon: "applemusic" },
-  { name: "Spotify", url: "https://open.spotify.com/artist/sebastianperalta", icon: "spotify" },
-  { name: "YouTube", url: "https://youtube.com/@sebastianperalta", icon: "youtube" },
+  { name: "Spotify", url: "https://open.spotify.com/intl-es/artist/7fWhk7L57o8lKa8KxI8Beq?si=rp8ruoyRRBCWd6atV8ppLg", icon: "spotify" },
+  { name: "YouTube", url: "https://www.youtube.com/@sebastianperalta3175", icon: "youtube" },
   { name: "Email", url: "mailto:contact@sebastianperalta.com", icon: "email" },
 ]
 
