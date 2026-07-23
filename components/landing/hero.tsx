@@ -1,13 +1,13 @@
 "use client"
 
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState, useEffect, useCallback } from "react"
 
 // ============================================
 // CONFIGURACION DEL PRODUCTOR - EDITA AQUI
 // ============================================
 const PRODUCER_CONFIG = {
   name: "SEBASTIAN PERALTA",
-  tagline: "Beatmaker · Productor Musical",
+  tagline: "Productor Musical · Beatmaker",
   description: "Creando sonidos que definen el futuro del urban y trap latino",
   heroImage: "/images/hero-sebastian.jpg",
   logo: null, // Puedes agregar "/images/logo.png" si tienes un logo
@@ -21,14 +21,13 @@ const SOCIAL_LINKS = [
   { name: "X", url: "https://x.com/SebastinPeralt8", icon: "x" },
   { name: "Facebook", url: "https://www.facebook.com/profile.php?id=100032094896809", icon: "facebook" },
   { name: "TikTok", url: "https://www.tiktok.com/@elsebaperalta", icon: "tiktok" },
-  { name: "Apple Music", url: "https://music.apple.com/artist/sebastianperalta", icon: "applemusic" },
   { name: "Spotify", url: "https://open.spotify.com/intl-es/artist/7fWhk7L57o8lKa8KxI8Beq?si=rp8ruoyRRBCWd6atV8ppLg", icon: "spotify" },
   { name: "YouTube", url: "https://www.youtube.com/@sebastianperalta3175", icon: "youtube" },
   { name: "Email", url: "mailto:contact@sebastianperalta.com", icon: "email" },
 ]
 
 function SocialIcon({ icon }: { icon: string }) {
-  const style = { width: "clamp(1.2rem, 2vw, 1.6rem)", height: "clamp(1.2rem, 2vw, 1.6rem)" }
+  const style = { width: "clamp(1.4rem, 2.4vw, 1.9rem)", height: "clamp(1.4rem, 2.4vw, 1.9rem)" }
   switch (icon) {
     case "instagram":
       return (
@@ -86,6 +85,7 @@ function SocialIcon({ icon }: { icon: string }) {
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [muted, setMuted] = useState(true)
+  const [needsTapToPlay, setNeedsTapToPlay] = useState(false)
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -94,12 +94,27 @@ export function Hero() {
     }
   }
 
-  useEffect(() => {
+  const attemptPlay = useCallback(() => {
     const video = videoRef.current
     if (!video) return
     video.muted = true
-    video.play().catch(() => {})
+    video.play().then(() => setNeedsTapToPlay(false)).catch(() => setNeedsTapToPlay(true))
   }, [])
+
+  useEffect(() => {
+    attemptPlay()
+  }, [attemptPlay])
+
+  useEffect(() => {
+    if (!needsTapToPlay) return
+    const retry = () => attemptPlay()
+    document.addEventListener("touchstart", retry, { once: true })
+    document.addEventListener("click", retry, { once: true })
+    return () => {
+      document.removeEventListener("touchstart", retry)
+      document.removeEventListener("click", retry)
+    }
+  }, [needsTapToPlay, attemptPlay])
   return (
     <section id="hero" className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
       {/* Background Video */}
@@ -160,31 +175,33 @@ export function Hero() {
         </div>
 
         {/* Social Links Bar - con borde redondeado como Pharrell */}
-        <div className="mt-6 inline-flex items-center border-[3px] border-foreground rounded-[10px] gap-3"
-          style={{ padding: "clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.7rem, 1.25vw, 1rem)" }}>
-          {SOCIAL_LINKS.map((social) =>
-            social.icon === "email" ? (
-              <button
-                key={social.name}
-                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="text-foreground hover:opacity-60 transition-opacity"
-                aria-label="Contacto"
-              >
-                <SocialIcon icon={social.icon} />
-              </button>
-            ) : (
-              <a
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground hover:opacity-60 transition-opacity"
-                aria-label={social.name}
-              >
-                <SocialIcon icon={social.icon} />
-              </a>
-            )
-          )}
+        <div className="mt-6 w-full flex justify-center">
+          <div className="flex items-center border-[3px] border-foreground rounded-[10px] gap-4"
+            style={{ padding: "clamp(0.45rem, 0.9vw, 0.75rem) clamp(1rem, 1.8vw, 1.5rem)" }}>
+            {SOCIAL_LINKS.map((social) =>
+              social.icon === "email" ? (
+                <button
+                  key={social.name}
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                  className="text-foreground hover:opacity-60 transition-opacity"
+                  aria-label="Contacto"
+                >
+                  <SocialIcon icon={social.icon} />
+                </button>
+              ) : (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground hover:opacity-60 transition-opacity"
+                  aria-label={social.name}
+                >
+                  <SocialIcon icon={social.icon} />
+                </a>
+              )
+            )}
+          </div>
         </div>
       </div>
 

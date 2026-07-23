@@ -9,34 +9,34 @@ import { AnimatedTitle } from "./animated-title"
 // ============================================
 const GALLERY_IMAGES = [
   { src: "/images/1.jpg", alt: "Sebastian Peralta" },
-  { src: "/images/2.jpg", alt: "Sebastian Peralta" },
+  // { src: "/images/2.jpg", alt: "Sebastian Peralta" }, // quitada
   { src: "/images/3.jpg", alt: "Sebastian Peralta" },
   { src: "/images/4.jpg", alt: "Sebastian Peralta" },
   { src: "/images/5.webp", alt: "Sebastian Peralta" },
-  { src: "/images/6.jpeg", alt: "Sebastian Peralta" },
-  { src: "/images/7.jpeg", alt: "Sebastian Peralta" },
+  // { src: "/images/6.jpeg", alt: "Sebastian Peralta" }, // quitada
+  // { src: "/images/7.jpeg", alt: "Sebastian Peralta" }, // quitada
   { src: "/images/8.jpg", alt: "Sebastian Peralta" },
   { src: "/images/9.jpg", alt: "Sebastian Peralta" },
   { src: "/images/10.JPG", alt: "Sebastian Peralta" },
   { src: "/images/11.jpg", alt: "Sebastian Peralta" },
-  { src: "/images/12.jpg", alt: "Sebastian Peralta" },
-  { src: "/images/13.jpg", alt: "Sebastian Peralta" },
-  { src: "/images/14.webp", alt: "Sebastian Peralta" },
+  // { src: "/images/12.jpg", alt: "Sebastian Peralta" }, // quitada
+  // { src: "/images/13.jpg", alt: "Sebastian Peralta" }, // quitada
+  { src: "/images/14.webp", alt: "Sebastian Peralta", position: "50% 35%" },
   { src: "/images/15.jpg", alt: "Sebastian Peralta" },
-  { src: "/images/16.jpeg", alt: "Sebastian Peralta" },
-  { src: "/images/17.jpeg", alt: "Sebastian Peralta" },
-  { src: "/images/18.jpg", alt: "Sebastian Peralta" },
+  // { src: "/images/16.jpeg", alt: "Sebastian Peralta" }, // quitada
+  // { src: "/images/17.jpeg", alt: "Sebastian Peralta" }, // quitada
+  // { src: "/images/18.jpg", alt: "Sebastian Peralta" }, // quitada
   { src: "/images/19.jpg", alt: "Sebastian Peralta" },
-  { src: "/images/20.jpg", alt: "Sebastian Peralta" },
-  { src: "/images/21.jpg", alt: "Sebastian Peralta" },
-  { src: "/images/22.jpg", alt: "Sebastian Peralta" },
-  { src: "/images/23.jpg", alt: "Sebastian Peralta" },
+  // { src: "/images/20.jpg", alt: "Sebastian Peralta" }, // quitada
+  // { src: "/images/21.jpg", alt: "Sebastian Peralta" }, // quitada
+  // { src: "/images/22.jpg", alt: "Sebastian Peralta" }, // quitada
+  // { src: "/images/23.jpg", alt: "Sebastian Peralta" }, // quitada
   { src: "/images/24.jpg", alt: "Sebastian Peralta" },
-  { src: "/images/25.jpeg", alt: "Sebastian Peralta" },
-  { src: "/images/26.jpg", alt: "Sebastian Peralta" },
-  { src: "/images/27.jpg", alt: "Sebastian Peralta" },
-  { src: "/images/28.jpg", alt: "Sebastian Peralta" },
-  { src: "/images/29.jpg", alt: "Sebastian Peralta" },
+  // { src: "/images/25.jpeg", alt: "Sebastian Peralta" }, // quitada
+  // { src: "/images/26.jpg", alt: "Sebastian Peralta" }, // quitada
+  // { src: "/images/27.jpg", alt: "Sebastian Peralta" }, // quitada
+  // { src: "/images/28.jpg", alt: "Sebastian Peralta" }, // quitada
+  // { src: "/images/29.jpg", alt: "Sebastian Peralta" }, // quitada
 ]
 
 export function ImageCarousel() {
@@ -89,6 +89,7 @@ export function ImageCarousel() {
                 alt={image.alt}
                 fill
                 className="object-cover"
+                style={image.position ? { objectPosition: image.position } : undefined}
               />
             </div>
           ))}
