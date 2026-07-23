@@ -21,7 +21,7 @@ const GALLERY_IMAGES = [
   { src: "/images/11.jpg", alt: "Sebastian Peralta" },
   // { src: "/images/12.jpg", alt: "Sebastian Peralta" }, // quitada
   // { src: "/images/13.jpg", alt: "Sebastian Peralta" }, // quitada
-  { src: "/images/14.webp", alt: "Sebastian Peralta" },
+  { src: "/images/14.webp", alt: "Sebastian Peralta", position: "50% 35%" },
   { src: "/images/15.jpg", alt: "Sebastian Peralta" },
   // { src: "/images/16.jpeg", alt: "Sebastian Peralta" }, // quitada
   // { src: "/images/17.jpeg", alt: "Sebastian Peralta" }, // quitada
@@ -89,6 +89,7 @@ export function ImageCarousel() {
                 alt={image.alt}
                 fill
                 className="object-cover"
+                style={image.position ? { objectPosition: image.position } : undefined}
               />
             </div>
           ))}
