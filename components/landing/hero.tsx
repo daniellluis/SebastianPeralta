@@ -121,13 +121,24 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}
-          src="https://res.cloudinary.com/dxjyijvt9/video/upload/v1777660026/reel_3_beishe.mp4"
           autoPlay
           muted
           loop
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
-        />
+        >
+          {/* Mismo video, menor resolución/bitrate (generado por Cloudinary, sin recortar nada) para mobile: iOS bloquea el autoplay de archivos muy pesados */}
+          <source
+            src="https://res.cloudinary.com/dxjyijvt9/video/upload/f_auto,q_auto,w_780/v1777660026/reel_3_beishe.mp4"
+            media="(max-width: 768px)"
+            type="video/mp4"
+          />
+          <source
+            src="https://res.cloudinary.com/dxjyijvt9/video/upload/v1777660026/reel_3_beishe.mp4"
+            type="video/mp4"
+          />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
       </div>
 
