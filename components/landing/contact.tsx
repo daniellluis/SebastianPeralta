@@ -9,6 +9,7 @@ import { AnimatedTitle } from "./animated-title"
 const CONTACT_CONFIG = {
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
+  emailDisplay: process.env.NEXT_PUBLIC_CONTACT_EMAIL_DISPLAY ?? "contacto@sebaperalta.com",
   instagram: "https://www.instagram.com/sebastian__peralta/",
   youtube: "https://www.youtube.com/@sebastianperalta3175",
   spotify: "https://open.spotify.com/intl-es/artist/7fWhk7L57o8lKa8KxI8Beq?si=rp8ruoyRRBCWd6atV8ppLg",
@@ -160,7 +161,7 @@ export function Contact() {
                 <svg className="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span className="font-semibold group-hover:opacity-60 transition-opacity">{CONTACT_CONFIG.email}</span>
+                <span className="font-semibold group-hover:opacity-60 transition-opacity">{CONTACT_CONFIG.emailDisplay}</span>
               </a>
             </div>
 
