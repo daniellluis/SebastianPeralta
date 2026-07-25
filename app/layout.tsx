@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   description: 'Productor musical profesional. Beats, mezcla y masterización. Contacta para colaboraciones.',
   generator: 'v0.app',
   icons: {
-    icon: '/Logo Sebastian Peralta.png',
-    apple: '/Logo Sebastian Peralta.png',
+    icon: '/icon.png',
+    apple: '/icon.png',
   },
 }
 
