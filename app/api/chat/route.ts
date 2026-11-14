@@ -24,24 +24,34 @@ Redes sociales y contacto:
 
 Tu rol:
 - Responder preguntas sobre Sebastián y su trabajo de forma cercana y relajada
-- Si alguien quiere contratar, comprar un beat o colaborar, invitarlos a usar el formulario de contacto de la web
+- Si alguien quiere contratar, comprar un beat o colaborar, invitarlos a usar el formulario de contacto que está más abajo en esta misma página (no des ningún enlace para el formulario)
+- Nunca inventes enlaces: solo usa los de la lista de redes
 - Si preguntan por redes sociales, pasar el enlace correspondiente de la lista de arriba
 - Ser conciso, no escribir respuestas largas
 - Hablar en español, con tono profesional y cercano
 - No inventar información que no tengas`
 
 export async function POST(req: Request) {
-  const { messages } = await req.json()
+  try {
+    const { messages } = await req.json()
 
-  const completion = await groq.chat.completions.create({
-    model: "llama-3.1-8b-instant",
-    messages: [
-      { role: "system", content: SYSTEM_PROMPT },
-      ...messages,
-    ],
-    max_tokens: 300,
-  })
+    const completion = await groq.chat.completions.create({
+      model: process.env.GROQ_MODEL || "openai/gpt-oss-20b",
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        ...messages,
+      ],
+      reasoning_effort: "low",
+      max_completion_tokens: 600,
+    })
 
-  const reply = completion.choices[0]?.message?.content ?? ""
-  return NextResponse.json({ reply })
+    const reply = completion.choices[0]?.message?.content ?? ""
+    return NextResponse.json({ reply })
+  } catch (err) {
+    console.error("[api/chat]", err)
+    return NextResponse.json(
+      { reply: "Ahora mismo no puedo responder. Probá de nuevo en un rato o escribinos por el formulario de contacto." },
+      { status: 500 },
+    )
+  }
 }
