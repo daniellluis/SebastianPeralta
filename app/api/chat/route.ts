@@ -31,17 +31,26 @@ Tu rol:
 - No inventar información que no tengas`
 
 export async function POST(req: Request) {
-  const { messages } = await req.json()
+  try {
+    const { messages } = await req.json()
 
-  const completion = await groq.chat.completions.create({
-    model: "llama-3.1-8b-instant",
-    messages: [
-      { role: "system", content: SYSTEM_PROMPT },
-      ...messages,
-    ],
-    max_tokens: 300,
-  })
+    const completion = await groq.chat.completions.create({
+      model: process.env.GROQ_MODEL || "openai/gpt-oss-20b",
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        ...messages,
+      ],
+      reasoning_effort: "low",
+      max_completion_tokens: 600,
+    })
 
-  const reply = completion.choices[0]?.message?.content ?? ""
-  return NextResponse.json({ reply })
+    const reply = completion.choices[0]?.message?.content ?? ""
+    return NextResponse.json({ reply })
+  } catch (err) {
+    console.error("[api/chat]", err)
+    return NextResponse.json(
+      { reply: "Ahora mismo no puedo responder. Probá de nuevo en un rato o escribinos por el formulario de contacto." },
+      { status: 500 },
+    )
+  }
 }
